@@ -22,6 +22,8 @@ type Config struct {
 	ConsumerKey string
 	// Consumer Secret (Client Shared-Secret)
 	ConsumerSecret string
+	// Realm
+	Realm string
 	// Callback URL
 	CallbackURL string
 	// Provider Endpoint specifying OAuth1 endpoint URLs
@@ -31,10 +33,11 @@ type Config struct {
 }
 
 // NewConfig returns a new Config with the given consumer key and secret.
-func NewConfig(consumerKey, consumerSecret string) *Config {
+func NewConfig(consumerKey, consumerSecret, realm string) *Config {
 	return &Config{
 		ConsumerKey:    consumerKey,
 		ConsumerSecret: consumerSecret,
+		Realm: realm,
 	}
 }
 

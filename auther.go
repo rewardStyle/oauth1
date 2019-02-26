@@ -17,7 +17,7 @@ import (
 const (
 	authorizationHeaderParam  = "Authorization"
 	authorizationPrefix       = "OAuth " // trailing space is intentional
-        oauthRealm                = "realm"
+	oauthRealm                = "realm"
 	oauthConsumerKeyParam     = "oauth_consumer_key"
 	oauthNonceParam           = "oauth_nonce"
 	oauthSignatureParam       = "oauth_signature"
@@ -71,7 +71,7 @@ func (a *auther) setRequestTokenAuthHeader(req *http.Request) error {
 		return err
 	}
 	oauthParams[oauthSignatureParam] = signature
-        oauthParams[oauthRealm] = "3931178"
+	oauthParams[oauthRealm] = a.config.Realm
 	req.Header.Set(authorizationHeaderParam, authHeaderValue(oauthParams))
 	return nil
 }
@@ -111,7 +111,7 @@ func (a *auther) setRequestAuthHeader(req *http.Request, accessToken *Token) err
 		return err
 	}
 	oauthParams[oauthSignatureParam] = signature
-        oauthParams[oauthRealm] = "3931178"
+	oauthParams[oauthRealm] = a.config.Realm
 	req.Header.Set(authorizationHeaderParam, authHeaderValue(oauthParams))
 	return nil
 }
